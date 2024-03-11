@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEditor;
-using System.Runtime.CompilerServices;
 
 public class RotateAllHex : MonoBehaviour
 {
@@ -8,9 +6,14 @@ public class RotateAllHex : MonoBehaviour
 
     public void Awake()
     {
+        RotateAllHexs();
+    }
+
+    public void RotateAllHexs()
+    {
         foreach (Transform t in rotateTransforms)
         {
-            switch(Random.Range(0, 6))
+            switch (Random.Range(0, 6))
             {
                 case 0:
                     t.rotation = Quaternion.Euler(0, 0, 0);
@@ -32,14 +35,5 @@ public class RotateAllHex : MonoBehaviour
                     break;
             }
         }
-    }
-}
-
-public class Ed : Editor
-{
-    [MenuItem("Rotate/Rotate")]
-    public static void ReRotate()
-    {
-        FindObjectOfType<RotateAllHex>().Awake();
     }
 }
